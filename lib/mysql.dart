@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'dart:developer';
 
 import 'package:backend_flutter/ticket_model.dart';
@@ -11,10 +13,25 @@ class MySQL {
     return conn;
   }
 
+  addTicket(TicketDelayModel ticket) async {
+    final conn = await MySqlConnection.connect(
+      ConnectionSettings(
+        host: '127.0.0.1',
+        port: 3306,
+        user: 'root',
+        db: 'frog_db',
+      ),
+    );
+
+
+    final results = await conn.query(
+        "INSERT INTO `tickets_ticket`  (`ref`, `longitude_start` ,`user_id`) VALUES ('${ticket.ref}', ${ticket.longitude},'${ticket.userId}')",);
+
+  }
+
   Future<List> getTickets() async {
-    print("message");
     final conn = await MySqlConnection.connect(ConnectionSettings(
-      host: "127.0.0.1",
+      host: '127.0.0.1',
       port: 3306,
       user: 'root',
       db: 'itop_app',

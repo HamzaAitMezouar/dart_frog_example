@@ -19,15 +19,15 @@ class TicketDelayModel {
   var userName;
 
   TicketDelayModel({
-    required this.id,
-    required this.ref,
-    required this.delay,
-    required this.longitude,
-    required this.latitude,
-    required this.startDate,
-    required this.endDate,
-    required this.userId,
-    required this.userName,
+    this.id,
+    this.ref,
+    this.delay,
+    this.longitude,
+    this.latitude,
+    this.startDate,
+    this.endDate,
+    this.userId,
+    this.userName,
   });
 
   factory TicketDelayModel.fromJson(Map<String, dynamic> json) =>
@@ -37,8 +37,8 @@ class TicketDelayModel {
         delay: json['delay'],
         longitude: json['longitude'],
         latitude: json['latitude'],
-        startDate: DateTime.parse(json['start_date'].toString()),
-        endDate: DateTime.parse(json['end_date'].toString()),
+        startDate: json['start_date'].toString(),
+        endDate: json['end_date'].toString(),
         userId: json['user_id'],
         userName: json['user_name'],
       );
