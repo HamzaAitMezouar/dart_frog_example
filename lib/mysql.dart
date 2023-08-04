@@ -19,14 +19,13 @@ class MySQL {
         host: '127.0.0.1',
         port: 3306,
         user: 'root',
-        db: 'frog_db',
+        db: 'test_frog',
       ),
     );
 
-
     final results = await conn.query(
-        "INSERT INTO `tickets_ticket`  (`ref`, `longitude_start` ,`user_id`) VALUES ('${ticket.ref}', ${ticket.longitude},'${ticket.userId}')",);
-
+      "INSERT INTO `tickets_ticket`  (`ref` ,`user_id`) VALUES ('${ticket.ref}','${ticket.userId}')",
+    );
   }
 
   Future<List> getTickets() async {
@@ -34,7 +33,7 @@ class MySQL {
       host: '127.0.0.1',
       port: 3306,
       user: 'root',
-      db: 'itop_app',
+      db: 'test_frog',
     ));
 
     final results = await conn.query('Select * FROM tickets_ticket');
